@@ -22,7 +22,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "/src/components*", "router.ts", "/state/*.ts"],
+  "include": ["src", "**/*.ts", "**/*.tsx"],
   "types": ["node"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

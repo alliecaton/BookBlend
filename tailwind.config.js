@@ -3,8 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
-      'dark-purple': '#390099',
-      pink: '#FF0054',
+      cream: '#FCF7E3',
+      pink: '#DDA7C8',
+      yellow: '#F1CC5F',
       white: '#FFFFFF',
     },
     extend: {},
