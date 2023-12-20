@@ -1,5 +1,7 @@
+import Tutorial from '@/components/Tutorial/Tutorial'
+
 const Books = () => {
-  return <div>books</div>
+  return <Tutorial />
 }
 
 export default Books
