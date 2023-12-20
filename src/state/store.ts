@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import tutorialReducer from '@/state/tutorial/tutorialSlice'
+import listReducer from '@/state/list/listSlice'
 
 const store = configureStore({
   reducer: {
     tutorial: tutorialReducer,
+    list: listReducer,
   },
 })
 

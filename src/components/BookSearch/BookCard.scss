@@ -1,5 +1,11 @@
-.list {
+.card {
   & + & {
-    @apply ml-3;
+    @apply ml-9;
+  }
+
+  &:hover {
+    // move element up slightly with a smooth transition
+    @apply transform -translate-y-1 transition-transform duration-200 ease-in-out;
+    cursor: pointer;
   }
 }
