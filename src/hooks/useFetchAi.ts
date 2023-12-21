@@ -7,10 +7,14 @@ export const useFetchAi = <ResponseData>() => {
   const [data, setData] = useState<ResponseData | null>(null)
   const [error, setError] = useState<Error | AxiosError | null>(null)
 
+  type SearchData = {
+    search: string
+  }
+
   type Config = {
     url: string
     method: 'get' | 'post' | 'put' | 'delete'
-    data: string
+    data: SearchData
   }
 
   const fetchAI = async (config: Config) => {
