@@ -41,15 +41,17 @@ const BookCard: FC<Props> = ({ book }) => {
 
   return (
     <div className="relative card">
-      <div className="flex p-3 bg-cream rounded-lg border-b-[5px] border-black border-r-[2px]">
+      <div className="flex p-3 bg-cream rounded-lg border-b-[5px] border-black border-r-[2px] max-w-[300px]">
         <img className="w-30 rounded" src={book.img} alt="" />
         <div className="flex flex-col ml-3">
-          <div className="font-bold">{book.title}</div>
-          <div className="text-sm">{book.author}</div>
+          <div className="font-bold whitespace-break-spaces ">{book.name}</div>
+          <div className="text-sm whitespace-break-spaces ">{book.author}</div>
 
           <div className="divider my-1"></div>
 
-          <div className="text-sm mt-2">{book.description}</div>
+          <div className="text-sm mt-2 whitespace-break-spaces">
+            {book.description}
+          </div>
         </div>
       </div>
 

@@ -25,8 +25,7 @@
 }
 
 .btn:hover,
-.btn:focus,
-.btn:active {
+.btn:focus {
   -webkit-transform: skew(-10deg);
   transform: skew(-10deg);
 }

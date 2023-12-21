@@ -3,32 +3,27 @@ import { useState } from 'react'
 import Button from '@/components/Button/Button'
 import BookCard from '@/components/BookSearch/BookCard'
 
+import { useFetchAi } from '@/hooks/useFetchAi'
+
 import { Book } from '@/types/Books'
 
-const fakeData = [
-  {
-    id: 1,
-    title: 'A Little Life',
-    author: 'Hanya Yanagihara',
-    description: 'Depressing af',
-    img: 'https://placehold.co/100x140',
-  },
-  {
-    id: 2,
-    title: 'A Little Life',
-    author: 'Hanya Yanagihara',
-    description: 'Depressing af',
-    img: 'https://placehold.co/100x140',
-  },
-]
+interface BookData {
+  books: Book[]
+}
 
 const BookSearch = () => {
   const [search, setSearch] = useState<string>('')
-  const [results, setResults] = useState<Book[]>([])
+
+  const { loading, data, error, fetchAI } = useFetchAi<BookData>()
 
   const fetchResults = async () => {
-    // fetch with query
-    setResults(fakeData)
+    await fetchAI({
+      url: '/ai',
+      method: 'post',
+      data: {
+        search,
+      },
+    })
   }
 
   return (
@@ -44,10 +39,15 @@ const BookSearch = () => {
         <Button text="SEARCH" onClick={fetchResults} />
       </div>
 
-      <div className="flex items-center flex-wrap">
-        {results.map((book) => (
-          <BookCard book={book} key={book.id} />
-        ))}
+      {loading && <div>Loading...</div>}
+
+      {error && <div>Error...</div>}
+
+      <div className="flex items-center justify-center flex-wrap gap-6">
+        {!loading &&
+          !error &&
+          data?.books &&
+          data.books?.map((book, i) => <BookCard book={book} key={i} />)}
       </div>
     </>
   )
