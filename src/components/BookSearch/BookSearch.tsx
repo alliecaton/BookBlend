@@ -46,7 +46,7 @@ const BookSearch = () => {
 
       <div className="flex items-center flex-wrap">
         {results.map((book) => (
-          <BookCard book={book} />
+          <BookCard book={book} key={book.id} />
         ))}
       </div>
     </>

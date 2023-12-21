@@ -1,5 +1,6 @@
-import { FC } from 'react'
-import { Book } from '@/types/Books'
+import type { FC } from 'react'
+import { useEffect, useState } from 'react'
+import type { Book } from '@/types/Books'
 
 import { RootState } from '@/state/store'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,25 +15,29 @@ type Props = {
 }
 
 const BookCard: FC<Props> = ({ book }) => {
+  const [saved, setSaved] = useState(false)
+
   const dispatch = useDispatch()
 
   const list = useSelector((state: RootState) => state.list.savedList)
 
-  const checkIfSaved = () => {
+  useEffect(() => {
     const find = list.find((item: Book) => item.id === book.id)
-
-    return Boolean(find)
-  }
+    setSaved(Boolean(find))
+  }, [list, book.id])
 
   const handleSave = () => {
-    if (checkIfSaved()) {
+    if (saved) {
       dispatch(removeFromList(book))
     }
 
-    if (!checkIfSaved()) {
+    if (!saved) {
       dispatch(addToList(book))
     }
   }
+
+  // TODO: replace with MUI component...
+  const savedText = saved ? 'unsave' : 'save'
 
   return (
     <div className="relative card">
@@ -52,7 +57,7 @@ const BookCard: FC<Props> = ({ book }) => {
         onClick={handleSave}
         className="absolute top-[-20px] left-[-20px] rounded-full bg-white p-4"
       >
-        save
+        {savedText}
       </div>
     </div>
   )
