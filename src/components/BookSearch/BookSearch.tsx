@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import Button from '@/components/Button/Button'
 import BookCard from '@/components/BookSearch/BookCard'
+import Loader from '@/components/Loader/Loader'
 
 import { useFetchAi } from '@/hooks/useFetchAi'
 
@@ -39,7 +40,7 @@ const BookSearch = () => {
         <Button text="SEARCH" onClick={fetchResults} />
       </div>
 
-      {loading && <div>Loading...</div>}
+      {loading && <Loader />}
 
       {error && <div>Error...</div>}
 

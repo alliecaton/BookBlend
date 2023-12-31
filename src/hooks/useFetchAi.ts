@@ -14,7 +14,8 @@ export const useFetchAi = <ResponseData>() => {
   type Config = {
     url: string
     method: 'get' | 'post' | 'put' | 'delete'
-    data: SearchData
+    data?: SearchData
+    headers?: object
   }
 
   const fetchAI = async (config: Config) => {
@@ -25,8 +26,7 @@ export const useFetchAi = <ResponseData>() => {
         method: config.method,
         url: import.meta.env.VITE_API_BASE + config.url,
         data: config.data,
-        // headers: {
-        // },
+        headers: config.headers,
       }).then((res) => {
         setData(res.data)
       })

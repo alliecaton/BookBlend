@@ -2,7 +2,7 @@ import './Button.scss'
 
 interface ButtonProps {
   text: string
-  onClick: () => void
+  onClick: (arg?: unknown) => void
   variant?: 'large' | 'reg'
 }
 
